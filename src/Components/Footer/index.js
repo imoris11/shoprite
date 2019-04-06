@@ -53,7 +53,7 @@ class Footer extends Component {
             <Col sm={3}>
               <Link to='/'>
                 <Typography className={classes.title} variant="h6" color="inherit" noWrap>
-                  SHOPMATE
+                  SHOPRITE
                 </Typography>
               </Link>
             </Col>

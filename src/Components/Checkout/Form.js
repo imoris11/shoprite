@@ -67,7 +67,7 @@ class Form extends Component {
       <div className="checkout">
         <StripeCheckout
           token={this.submit}
-          name="SHOPMATE" // the pop-in header title
+          name="SHOPRITE" // the pop-in header title
           description="Amazing clothings, amazing prices"
           amount={this.state.total * 100} // cents
           currency="USD"

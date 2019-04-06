@@ -202,7 +202,7 @@ class PrimarySearchAppBar extends React.Component {
           <Toolbar>
             <Link className='navbar-brand' to='/'>
               <Typography className={classes.title} variant="h6" color="inherit" noWrap>
-                SHOPMATE
+                SHOPRITE
               </Typography>
             </Link>
 
