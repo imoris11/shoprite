@@ -3,43 +3,34 @@ import { Row, Col } from 'react-bootstrap';
 import Products from '../Products';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { searcApi } from './SearchApi';
 export default class Search extends Component {
   constructor (props) {
     super(props);
     this.state = {
       searchString:this.props.match.params.value,
       loading:true,
-      products:[]
+      products:[],
+      pages:0,
+      showing:20
     }
   }
   componentDidMount () {
     this.searchProducts()
   }
-  searchProducts = () => {
-    fetch('https://backendapi.turing.com/products/search?query_string=' + this.state.searchString + '&all_words=on')
-    .then(response => response.json())
-    .then(result => {
-      let products = [];
-      result.rows.forEach((product)=> {
-        fetch('https://backendapi.turing.com/attributes/inProduct/'+product.product_id)
-        .then(res => res.json())
-        .then(attributes => {
-          let sizes = attributes.filter((att => att.attribute_name === 'Size'));
-          let colors = attributes.filter((att => att.attribute_name === 'Color'));
-          let item = product;
-          item['sizes'] = sizes;
-          item['colors'] = colors;
-          products.push(item);
-          this.setState({products, count:result.count, loading:false});
-        }).catch(error => {
-          this.errorNotification("Oops, encountered an error. Please try again.");
-        })
-      })
-    })
-    .catch(error => {
-      this.setState({ loadingError:true, loading:false})
-      this.errorNotification("Oops, encountered an error. Please try again.");
-    })
+  searchProducts = async (page = 1) => {
+    let url = 'https://backendapi.turing.com/products/search?query_string=' + this.state.searchString + '&all_words=on';
+    let result = await searcApi(url, page);
+    this.setState({products:result.products, count:result.count, loading:false, currentPage:page});
+    //Set pages for pagination
+    this.setPagination(result.count);
+  }
+  setPagination = (count) => {
+    let pages = Math.floor(count/this.state.showing);
+    if (count%20 !== 0) {
+      pages++;
+    }
+    this.setState({pages});
   }
   errorNotification = (message) => {
     toast.error(message, {
@@ -47,12 +38,23 @@ export default class Search extends Component {
       });
   }
   render () {
-    let { products, loading } = this.state;
+    let { products, loading, pages } = this.state;
+    let pagination = [];
+    for(let i=1; i<=pages; i++){
+      pagination.push(<div key={i}
+        className={this.state.currentPage === i ? 'page-item-active' : 'page-item' }
+        onClick={()=>this.searchProducts(i)}>{i}</div>);
+    }
     return (
       <div style={{marginTop:30}}>
         <h3 className='text-center'>
           Showing results for "{this.state.searchString}"
         </h3>
+        <Col sm={{ span: 6, offset: 3 }} >
+          <Row  style={{justifyContent:'center'}}>
+            {pagination}
+          </Row>
+        </Col>
         <Row>
           <Col md={{ span: 10, offset: 1 }}>
             <Products products={products} loading={loading} />

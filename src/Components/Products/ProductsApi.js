@@ -1,6 +1,7 @@
 export const getProductsApi = async (url, page, isDepartment) =>{
   let response = await fetch(url+'?page='+page);
   let results = await response.json();
+  console.log(results);
   let products = []
   for (let i=0; i<results.rows.length; i++) {
     let attributeResponse = await fetch('https://backendapi.turing.com/attributes/inProduct/'+results.rows[i].product_id);
