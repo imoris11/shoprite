@@ -1,0 +1,8 @@
+.cart-product{
+  text-transform: uppercase;
+  font-weight: bold;
+  flex-wrap: wrap;
+}
+.cart-item {
+  color:grey;
+}

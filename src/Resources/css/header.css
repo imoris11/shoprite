@@ -1,0 +1,48 @@
+.span-link {
+  cursor: pointer;
+  color: #f62f5e;
+}
+.span-link:hover {
+  color:white;
+}
+.primary-link:hover {
+  color: #f62f5e;
+}
+a:hover{
+  text-decoration: none;
+  color:white;
+}
+.secondary-link:hover {
+  background-color: white;
+  color: #f62f5e;
+}
+.navbar-brand:hover {
+  color:white;
+}
+.banner {
+ top: 0px;
+ left: 0px;
+ right: 0px;
+ width: 100%;
+ height: 336px;
+ z-index: -1;
+}
+.header_text {
+  position: absolute;
+  top:30%;
+  left:20%;
+}
+.floating-button {
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  background-color: #f62f5e;
+  position: fixed;
+  bottom:5px;
+  z-index:10;
+  right:5px;
+  cursor: pointer;
+}
+.floating-icon {
+  color:white;
+}

@@ -1,0 +1,55 @@
+.product-name {
+  text-transform: uppercase;
+}
+.color-circle {
+  height:16px;
+  width:16px;
+  border-radius:8px;
+  cursor: pointer;
+}
+.horizontal{
+  float: left;
+}
+
+.horizontal *{
+  display: inline-block;
+  margin-left: 10px;
+}
+.section-header{
+  color: grey;
+  font-weight: bold;
+}
+.size-item {
+  width:40px;
+  height:25px;
+  cursor: pointer;
+}
+.image-item {
+  margin-top:20px;
+  padding: 5px;
+  cursor: pointer;
+}
+.price {
+  font-weight:700;
+  color:#f62f5e;
+}
+.star {
+  color:orange;
+}
+.timestamp {
+  font-size: 10px;
+  line-height: 5px;
+}
+.username {
+  font-size: 18px;
+}
+.directions {
+  width:30px;
+  height:30px;
+  border-radius:15px;
+  background-color:#EEE;
+  cursor: pointer;
+}
+.discounted {
+  text-decoration: line-through;
+}

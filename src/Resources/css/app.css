@@ -1,0 +1,97 @@
+body {
+    margin:0;
+    padding:0;
+    font-family: 'Roboto', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+
+    margin: 0 auto;
+}
+
+input {
+    font-size: 17px;
+    padding: 8px;
+    border: transparent;
+    font-family: Roboto;
+    font-weight: 300;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+button {
+    background: #F69A21;
+    color: #ffffff;
+    border: 1px solid #F69A21;
+    padding: 5px 10px;
+    margin-top: 10px;
+    font-size: 15px;
+    border-radius: 3px;
+}
+
+.error_label {
+    color: #F44336;
+    font-weight: 600;
+    margin: 10px 0px;
+}
+
+.success_label {
+    color: #98c5e9;
+    font-weight: 600;
+    margin: 10px 0px;
+}
+
+.card {
+    position: relative;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+}
+
+.blur-me {
+    filter: blur(0px);
+}
+
+/*=============================
+            SIGN UP
+===============================*/
+
+.signup_wrapper {
+    padding: 5px;
+    min-height: 70VH;
+    text-align: center;
+}
+
+.signup_wrapper form {
+    width: 350px;
+    margin: 0 auto;
+}
+
+.signup_wrapper form button {
+    width: 100%;
+    padding: 10px;
+}
+
+.signup_wrapper h2 {
+    font-family: 'Righteous';
+    color: #000;
+    font-size: 40px;
+}
+
+.stat {
+  position: relative;
+  float: left;
+  margin-left: 5%;
+}
