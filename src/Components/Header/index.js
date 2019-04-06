@@ -7,7 +7,7 @@ import ArrowDropUp from '@material-ui/icons/ArrowDropUp';
 import Badge from '@material-ui/core/Badge';
 import AppBar from './Appbar';
 import {Row, Col} from 'react-bootstrap';
-import {Link} from 'react-router-dom';
+import {Link, BrowserRouter as Router} from 'react-router-dom';
 import Registration from '../Registration';
 import CartModal from '../Cart/Cart-modal';
 import '../../Resources/css/header.css';
@@ -113,12 +113,12 @@ class Header extends Component{
   render () {
     const { classes } = this.props;
     return (
-      <div className={classes.root}>
+      <Router className={classes.root}>
         <Col style={{backgroundColor:'#2e2e2e', color:'white'}}>
           <Row>
             <Col sm={3} xs={10}>
               {!this.state.token ?
-                 <p style={{marginTop:10}}>Hi! <span className='span-link' onClick={this.toggleDialog}>Sign in</span>
+                 <p style={{marginTop:10}}>Hi! <span className='span-link' id="span-link" onClick={this.toggleDialog}>Sign in</span>
                  &nbsp; Or <span className='span-link' onClick={this.toggleDialog}>Register</span>
                </p> : <p style={{marginTop:10}}>Hi! <span className='span-link'>{this.state.name}</span></p>
              }
@@ -157,7 +157,7 @@ class Header extends Component{
         </div> }
         <Registration showDialog={this.state.showDialog} handleClose={this.handleClose} />
         <CartModal showDialog={this.state.showCart} handleClose={this.handleClose} items={this.state.badgeValue} />
-      </div>
+      </Router>
     );
   }
 }

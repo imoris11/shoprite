@@ -1,0 +1,397 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Registration Component renders correctly 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <CustomizedDialog
+    handleClose={[Function]}
+    showDialog={true}
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": <WithStyles(Dialog)
+        aria-labelledby="customized-dialog-title"
+        onClose={[Function]}
+        open={true}
+      >
+        <WithStyles(Component)
+          id="customized-dialog-title"
+          onClose={[Function]}
+        >
+          <WithStyles(Tabs)
+            onChange={[Function]}
+            value={0}
+          >
+            <WithStyles(Tab)
+              label="Sign in"
+            />
+            <WithStyles(Tab)
+              label="Register"
+            />
+          </WithStyles(Tabs)>
+        </WithStyles(Component)>
+        <WithStyles(WithStyles(DialogContent))>
+          <TabContainer>
+            <SignIn />
+          </TabContainer>
+        </WithStyles(WithStyles(DialogContent))>
+      </WithStyles(Dialog)>,
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "aria-labelledby": "customized-dialog-title",
+        "children": Array [
+          <WithStyles(Component)
+            id="customized-dialog-title"
+            onClose={[Function]}
+          >
+            <WithStyles(Tabs)
+              onChange={[Function]}
+              value={0}
+            >
+              <WithStyles(Tab)
+                label="Sign in"
+              />
+              <WithStyles(Tab)
+                label="Register"
+              />
+            </WithStyles(Tabs)>
+          </WithStyles(Component)>,
+          <WithStyles(WithStyles(DialogContent))>
+            <TabContainer>
+              <SignIn />
+            </TabContainer>
+          </WithStyles(WithStyles(DialogContent))>,
+        ],
+        "onClose": [Function],
+        "open": true,
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <WithStyles(Tabs)
+              onChange={[Function]}
+              value={0}
+            >
+              <WithStyles(Tab)
+                label="Sign in"
+              />
+              <WithStyles(Tab)
+                label="Register"
+              />
+            </WithStyles(Tabs)>,
+            "id": "customized-dialog-title",
+            "onClose": [Function],
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": Array [
+                <WithStyles(Tab)
+                  label="Sign in"
+                />,
+                <WithStyles(Tab)
+                  label="Register"
+                />,
+              ],
+              "onChange": [Function],
+              "value": 0,
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "label": "Sign in",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "label": "Register",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+            ],
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <TabContainer>
+                <SignIn />
+              </TabContainer>,
+              false,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "children": <SignIn />,
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {},
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            false,
+          ],
+          "type": [Function],
+        },
+      ],
+      "type": [Function],
+    },
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": <WithStyles(Dialog)
+          aria-labelledby="customized-dialog-title"
+          onClose={[Function]}
+          open={true}
+        >
+          <WithStyles(Component)
+            id="customized-dialog-title"
+            onClose={[Function]}
+          >
+            <WithStyles(Tabs)
+              onChange={[Function]}
+              value={0}
+            >
+              <WithStyles(Tab)
+                label="Sign in"
+              />
+              <WithStyles(Tab)
+                label="Register"
+              />
+            </WithStyles(Tabs)>
+          </WithStyles(Component)>
+          <WithStyles(WithStyles(DialogContent))>
+            <TabContainer>
+              <SignIn />
+            </TabContainer>
+          </WithStyles(WithStyles(DialogContent))>
+        </WithStyles(Dialog)>,
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "aria-labelledby": "customized-dialog-title",
+          "children": Array [
+            <WithStyles(Component)
+              id="customized-dialog-title"
+              onClose={[Function]}
+            >
+              <WithStyles(Tabs)
+                onChange={[Function]}
+                value={0}
+              >
+                <WithStyles(Tab)
+                  label="Sign in"
+                />
+                <WithStyles(Tab)
+                  label="Register"
+                />
+              </WithStyles(Tabs)>
+            </WithStyles(Component)>,
+            <WithStyles(WithStyles(DialogContent))>
+              <TabContainer>
+                <SignIn />
+              </TabContainer>
+            </WithStyles(WithStyles(DialogContent))>,
+          ],
+          "onClose": [Function],
+          "open": true,
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": <WithStyles(Tabs)
+                onChange={[Function]}
+                value={0}
+              >
+                <WithStyles(Tab)
+                  label="Sign in"
+                />
+                <WithStyles(Tab)
+                  label="Register"
+                />
+              </WithStyles(Tabs)>,
+              "id": "customized-dialog-title",
+              "onClose": [Function],
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": Array [
+                  <WithStyles(Tab)
+                    label="Sign in"
+                  />,
+                  <WithStyles(Tab)
+                    label="Register"
+                  />,
+                ],
+                "onChange": [Function],
+                "value": 0,
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "label": "Sign in",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "label": "Register",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+              ],
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": Array [
+                <TabContainer>
+                  <SignIn />
+                </TabContainer>,
+                false,
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "children": <SignIn />,
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {},
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                "type": [Function],
+              },
+              false,
+            ],
+            "type": [Function],
+          },
+        ],
+        "type": [Function],
+      },
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromError": true,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+  Symbol(enzyme.__childContext__): null,
+}
+`;

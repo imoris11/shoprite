@@ -226,6 +226,7 @@ class PrimarySearchAppBar extends React.Component {
                 <InputBase
                   placeholder="Search…"
                   onChange={this.handleChange}
+                  id={'searchBox'}
                   name='searchString'
                   value={this.state.searchString}
                   classes={{
@@ -234,7 +235,7 @@ class PrimarySearchAppBar extends React.Component {
                   }}
                 />
               </div>
-              <button type="submit" style={{display:'none'}}></button>
+              <button id="submitBtn" type="submit" style={{display:'none'}}></button>
             </form>
             <div>
               {this.state.loggedIn && (

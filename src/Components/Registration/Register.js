@@ -8,7 +8,7 @@ class Register extends Component {
   }
   handleSubmit = (e) => {
     e.preventDefault();
-    this.setState(prevState => ({loading:!prevState.loading}));
+    this.setState(prevState => ({loading:!prevState.loading, form_submitted:true}));
     let data = {
       name:this.state.name,
       email:this.state.email,
@@ -85,7 +85,7 @@ class Register extends Component {
               {this.state.loading ? <Button className='float-right' variant="contained" color="secondary" >
                 Signing up...
               </Button> :
-              <Button className='float-right' type='submit' variant="contained" color="secondary" >
+              <Button id="submit_form" className='float-right' type='submit' variant="contained" color="secondary" >
                 Sign Up
               </Button>}
 

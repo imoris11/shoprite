@@ -1,0 +1,582 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test checkout component renders correctly 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Checkout />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "function",
+    "props": Object {
+      "as": "div",
+      "children": Array [
+        <ForwardRef
+          as="div"
+          md={
+            Object {
+              "offset": 1,
+              "span": 10,
+            }
+          }
+        >
+          <WithStyles(Stepper)
+            activeStep={0}
+          >
+            <WithStyles(Step)>
+              <WithStyles(StepLabel)>
+                Confirmation
+              </WithStyles(StepLabel)>
+            </WithStyles(Step)>
+            <WithStyles(Step)>
+              <WithStyles(StepLabel)>
+                Contact Information
+              </WithStyles(StepLabel)>
+            </WithStyles(Step)>
+            <WithStyles(Step)>
+              <WithStyles(StepLabel)>
+                Payment
+              </WithStyles(StepLabel)>
+            </WithStyles(Step)>
+            <WithStyles(Step)>
+              <WithStyles(StepLabel)>
+                Finish
+              </WithStyles(StepLabel)>
+            </WithStyles(Step)>
+          </WithStyles(Stepper)>
+          <WithStyles(Cart)
+            checkout={true}
+            onNext={[Function]}
+          />
+        </ForwardRef>,
+        <CustomizedDialog
+          handleClose={[Function]}
+          showDialog={true}
+        />,
+      ],
+      "style": Object {
+        "marginTop": 30,
+      },
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "as": "div",
+          "children": Array [
+            <WithStyles(Stepper)
+              activeStep={0}
+            >
+              <WithStyles(Step)>
+                <WithStyles(StepLabel)>
+                  Confirmation
+                </WithStyles(StepLabel)>
+              </WithStyles(Step)>
+              <WithStyles(Step)>
+                <WithStyles(StepLabel)>
+                  Contact Information
+                </WithStyles(StepLabel)>
+              </WithStyles(Step)>
+              <WithStyles(Step)>
+                <WithStyles(StepLabel)>
+                  Payment
+                </WithStyles(StepLabel)>
+              </WithStyles(Step)>
+              <WithStyles(Step)>
+                <WithStyles(StepLabel)>
+                  Finish
+                </WithStyles(StepLabel)>
+              </WithStyles(Step)>
+            </WithStyles(Stepper)>,
+            <WithStyles(Cart)
+              checkout={true}
+              onNext={[Function]}
+            />,
+          ],
+          "md": Object {
+            "offset": 1,
+            "span": 10,
+          },
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "activeStep": 0,
+              "children": Array [
+                <WithStyles(Step)>
+                  <WithStyles(StepLabel)>
+                    Confirmation
+                  </WithStyles(StepLabel)>
+                </WithStyles(Step)>,
+                <WithStyles(Step)>
+                  <WithStyles(StepLabel)>
+                    Contact Information
+                  </WithStyles(StepLabel)>
+                </WithStyles(Step)>,
+                <WithStyles(Step)>
+                  <WithStyles(StepLabel)>
+                    Payment
+                  </WithStyles(StepLabel)>
+                </WithStyles(Step)>,
+                <WithStyles(Step)>
+                  <WithStyles(StepLabel)>
+                    Finish
+                  </WithStyles(StepLabel)>
+                </WithStyles(Step)>,
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": "Confirmation",
+                "nodeType": "class",
+                "props": Object {
+                  "children": <WithStyles(StepLabel)>
+                    Confirmation
+                  </WithStyles(StepLabel)>,
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": "Confirmation",
+                  },
+                  "ref": null,
+                  "rendered": "Confirmation",
+                  "type": [Function],
+                },
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": "Contact Information",
+                "nodeType": "class",
+                "props": Object {
+                  "children": <WithStyles(StepLabel)>
+                    Contact Information
+                  </WithStyles(StepLabel)>,
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": "Contact Information",
+                  },
+                  "ref": null,
+                  "rendered": "Contact Information",
+                  "type": [Function],
+                },
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": "Payment",
+                "nodeType": "class",
+                "props": Object {
+                  "children": <WithStyles(StepLabel)>
+                    Payment
+                  </WithStyles(StepLabel)>,
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": "Payment",
+                  },
+                  "ref": null,
+                  "rendered": "Payment",
+                  "type": [Function],
+                },
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": "Finish",
+                "nodeType": "class",
+                "props": Object {
+                  "children": <WithStyles(StepLabel)>
+                    Finish
+                  </WithStyles(StepLabel)>,
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": "Finish",
+                  },
+                  "ref": null,
+                  "rendered": "Finish",
+                  "type": [Function],
+                },
+                "type": [Function],
+              },
+            ],
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "checkout": true,
+              "onNext": [Function],
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+        ],
+        "type": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "as": "div",
+          },
+          "displayName": "Col",
+          "render": [Function],
+        },
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "handleClose": [Function],
+          "showDialog": true,
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "defaultProps": Object {
+        "as": "div",
+      },
+      "displayName": "Col",
+      "render": [Function],
+    },
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "as": "div",
+        "children": Array [
+          <ForwardRef
+            as="div"
+            md={
+              Object {
+                "offset": 1,
+                "span": 10,
+              }
+            }
+          >
+            <WithStyles(Stepper)
+              activeStep={0}
+            >
+              <WithStyles(Step)>
+                <WithStyles(StepLabel)>
+                  Confirmation
+                </WithStyles(StepLabel)>
+              </WithStyles(Step)>
+              <WithStyles(Step)>
+                <WithStyles(StepLabel)>
+                  Contact Information
+                </WithStyles(StepLabel)>
+              </WithStyles(Step)>
+              <WithStyles(Step)>
+                <WithStyles(StepLabel)>
+                  Payment
+                </WithStyles(StepLabel)>
+              </WithStyles(Step)>
+              <WithStyles(Step)>
+                <WithStyles(StepLabel)>
+                  Finish
+                </WithStyles(StepLabel)>
+              </WithStyles(Step)>
+            </WithStyles(Stepper)>
+            <WithStyles(Cart)
+              checkout={true}
+              onNext={[Function]}
+            />
+          </ForwardRef>,
+          <CustomizedDialog
+            handleClose={[Function]}
+            showDialog={true}
+          />,
+        ],
+        "style": Object {
+          "marginTop": 30,
+        },
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "as": "div",
+            "children": Array [
+              <WithStyles(Stepper)
+                activeStep={0}
+              >
+                <WithStyles(Step)>
+                  <WithStyles(StepLabel)>
+                    Confirmation
+                  </WithStyles(StepLabel)>
+                </WithStyles(Step)>
+                <WithStyles(Step)>
+                  <WithStyles(StepLabel)>
+                    Contact Information
+                  </WithStyles(StepLabel)>
+                </WithStyles(Step)>
+                <WithStyles(Step)>
+                  <WithStyles(StepLabel)>
+                    Payment
+                  </WithStyles(StepLabel)>
+                </WithStyles(Step)>
+                <WithStyles(Step)>
+                  <WithStyles(StepLabel)>
+                    Finish
+                  </WithStyles(StepLabel)>
+                </WithStyles(Step)>
+              </WithStyles(Stepper)>,
+              <WithStyles(Cart)
+                checkout={true}
+                onNext={[Function]}
+              />,
+            ],
+            "md": Object {
+              "offset": 1,
+              "span": 10,
+            },
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "activeStep": 0,
+                "children": Array [
+                  <WithStyles(Step)>
+                    <WithStyles(StepLabel)>
+                      Confirmation
+                    </WithStyles(StepLabel)>
+                  </WithStyles(Step)>,
+                  <WithStyles(Step)>
+                    <WithStyles(StepLabel)>
+                      Contact Information
+                    </WithStyles(StepLabel)>
+                  </WithStyles(Step)>,
+                  <WithStyles(Step)>
+                    <WithStyles(StepLabel)>
+                      Payment
+                    </WithStyles(StepLabel)>
+                  </WithStyles(Step)>,
+                  <WithStyles(Step)>
+                    <WithStyles(StepLabel)>
+                      Finish
+                    </WithStyles(StepLabel)>
+                  </WithStyles(Step)>,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": "Confirmation",
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": <WithStyles(StepLabel)>
+                      Confirmation
+                    </WithStyles(StepLabel)>,
+                  },
+                  "ref": null,
+                  "rendered": Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": "Confirmation",
+                    },
+                    "ref": null,
+                    "rendered": "Confirmation",
+                    "type": [Function],
+                  },
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": "Contact Information",
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": <WithStyles(StepLabel)>
+                      Contact Information
+                    </WithStyles(StepLabel)>,
+                  },
+                  "ref": null,
+                  "rendered": Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": "Contact Information",
+                    },
+                    "ref": null,
+                    "rendered": "Contact Information",
+                    "type": [Function],
+                  },
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": "Payment",
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": <WithStyles(StepLabel)>
+                      Payment
+                    </WithStyles(StepLabel)>,
+                  },
+                  "ref": null,
+                  "rendered": Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": "Payment",
+                    },
+                    "ref": null,
+                    "rendered": "Payment",
+                    "type": [Function],
+                  },
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": "Finish",
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": <WithStyles(StepLabel)>
+                      Finish
+                    </WithStyles(StepLabel)>,
+                  },
+                  "ref": null,
+                  "rendered": Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": "Finish",
+                    },
+                    "ref": null,
+                    "rendered": "Finish",
+                    "type": [Function],
+                  },
+                  "type": [Function],
+                },
+              ],
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "checkout": true,
+                "onNext": [Function],
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
+          "type": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "defaultProps": Object {
+              "as": "div",
+            },
+            "displayName": "Col",
+            "render": [Function],
+          },
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "handleClose": [Function],
+            "showDialog": true,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "defaultProps": Object {
+          "as": "div",
+        },
+        "displayName": "Col",
+        "render": [Function],
+      },
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromError": true,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+  Symbol(enzyme.__childContext__): null,
+}
+`;
