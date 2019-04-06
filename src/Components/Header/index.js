@@ -9,7 +9,7 @@ import AppBar from './Appbar';
 import {Row, Col} from 'react-bootstrap';
 import {Link, BrowserRouter as Router} from 'react-router-dom';
 import Registration from '../Registration';
-import CartModal from '../Cart/Cart-modal';
+import CartModal from '../Cart/CartModal';
 import '../../Resources/css/header.css';
 const styles = theme => ({
   root: {
@@ -113,7 +113,7 @@ class Header extends Component{
   render () {
     const { classes } = this.props;
     return (
-      <Router className={classes.root}>
+      <div className={classes.root}>
         <Col style={{backgroundColor:'#2e2e2e', color:'white'}}>
           <Row>
             <Col sm={3} xs={10}>
@@ -157,7 +157,7 @@ class Header extends Component{
         </div> }
         <Registration showDialog={this.state.showDialog} handleClose={this.handleClose} />
         <CartModal showDialog={this.state.showCart} handleClose={this.handleClose} items={this.state.badgeValue} />
-      </Router>
+      </div>
     );
   }
 }

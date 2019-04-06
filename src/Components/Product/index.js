@@ -10,6 +10,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../../Resources/css/product.css';
 import Reviews from './Reviews';
+import { getProductApi, getAttributesApi, getReviewsApi } from '../Products/ProductsApi';
 
 class Product extends Component {
   constructor (props) {
@@ -36,33 +37,26 @@ class Product extends Component {
     this.fetchProduct();
     this.fetchReviews();
   }
-  fetchProduct = () => {
+  fetchProduct = async () => {
     //Fetch product details
-    fetch('https://backendapi.turing.com/products/'+this.state.productId)
-    .then(response => response.json())
-    .then(product => {
-      if (!product.error) {
-        let { isDiscounted } = this.state;
-        if (Number(product.discounted_price) > 0) {
-          isDiscounted = true;
-        }
-        this.setState({
-          product,
-          currentImage:'https://backendapi.turing.com/images/products/'+product.image,
-          showing:'image1',
-          isDiscounted,
-          loading:false
-        });
-
-      }else{
-        this.setState({loading:false});
-        this.errorNotification(product.error.message);
+    let url = 'https://backendapi.turing.com/products/'+this.state.productId;
+    let product =  await getProductApi(url);
+    if (!product.error) {
+      let { isDiscounted } = this.state;
+      if (Number(product.discounted_price) > 0) {
+        isDiscounted = true;
       }
-    })
-    .catch(error => {
-      this.errorNotification("Oops, encountered an error. Please try again.");
-      this.setState({loading:false, loadingError:true});
-    });
+      this.setState({
+        product,
+        currentImage:'https://backendapi.turing.com/images/products/'+product.image,
+        showing:'image1',
+        isDiscounted,
+        loading:false
+      });
+    }else{
+      this.setState({loading:false});
+      this.errorNotification(product.error.message);
+    }
     this.fetchAttributes()
   }
   errorNotification = (message) => {
@@ -70,43 +64,30 @@ class Product extends Component {
         position: toast.POSITION.TOP_RIGHT
       });
   }
-  fetchAttributes = () => {
+  fetchAttributes = async () => {
     //Fetch product attributes
-    fetch('https://backendapi.turing.com/attributes/inProduct/'+this.state.productId)
-    .then(res => res.json())
-    .then(attributes => {
-      if (!attributes.error) {
-        let sizes = attributes.filter((att => att.attribute_name === 'Size'));
-        let colors = attributes.filter((att => att.attribute_name === 'Color'));
-        this.setState({sizes, colors});
-      }else{
-        // TODO: Add Toats with error message
-        this.setState({errorMessage:attributes.error.message});
-        this.errorNotification(attributes.error.message);
-      }
-
-    }).catch(error => {
-      this.errorNotification("Oops, encountered an error. Please try again.");
-    })
+    let url = 'https://backendapi.turing.com/attributes/inProduct/'+this.state.productId;
+    let attributes =  await getAttributesApi(url);
+    if (!attributes.error) {
+      let sizes = attributes.filter((att => att.attribute_name === 'Size'));
+      let colors = attributes.filter((att => att.attribute_name === 'Color'));
+      this.setState({sizes, colors});
+    }else{
+      this.setState({errorMessage:attributes.error.message});
+      this.errorNotification(attributes.error.message);
+    }
   }
-  fetchReviews = () => {
+  fetchReviews = async () => {
     //Fetch product reviews
-    fetch('https://backendapi.turing.com/products/' + this.state.productId + '/reviews')
-    .then(response => response.json())
-    .then(reviews => {
-      if (!reviews.error) {
-        //Show only three reviews
-        this.calculateAverageRating(reviews);
-        this.setState({reviews:reviews.slice(0,2), totalReviews:reviews.length-1});
-      }else{
-        this.errorNotification(reviews.error.message);
-      }
-    })
-    .catch(error => {
-      // TODO: Use snackbar to display error
-      this.setState({errorMessage:error.toString()})
-      this.errorNotification("Oops, encountered an error. Please try again.");
-    })
+    let url = 'https://backendapi.turing.com/products/' + this.state.productId + '/reviews';
+    let reviews = await getReviewsApi(url);
+    if (!reviews.error) {
+      //Show only three reviews
+      this.calculateAverageRating(reviews);
+      this.setState({reviews:reviews.slice(0,2), totalReviews:reviews.length-1});
+    }else{
+      this.errorNotification(reviews.error.message);
+    }
   }
   calculateAverageRating (reviews) {
     /*
@@ -191,12 +172,12 @@ class Product extends Component {
      localStorage.setItem('products', JSON.stringify(productsArray));
    }
    this.successNotification("Successfully added to cart");
- }
+  }
   successNotification = (message) => {
    toast.success(message, {
        position: toast.POSITION.TOP_RIGHT
      });
- }
+  }
   reduceQuantity = () => {
     let {quantity} = this.state;
     if (quantity > 1) {

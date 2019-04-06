@@ -2,41 +2,24 @@ import React, {Component} from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import {Row, Col} from 'react-bootstrap';
+import { loginApi } from './AuthApi';
 class SignIn extends Component {
   state = {
     loading:false
   }
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault();
     this.setState(prevState => ({loading:!prevState.loading}));
     let data = {
       email:this.state.email,
       password:this.state.password
     };
-    let url = 'https://backendapi.turing.com/customers/login';
-    fetch(url, {
-      method:'POST',
-      body: JSON.stringify(data),
-      headers:{'content-type': 'application/json'}
-    })
-    .then(response => response.json())
-    .then(result => {
-      if (result.error) {
-        this.setState({errorMessage:result.error.message});
-      }else{
-        localStorage.setItem('token', result.accessToken);
-        localStorage.setItem('customer_id', result.user.customer_id)
-        result.user.firstName = result.user.name.split(" ")[0];
-        result.user.lastName = result.user.name.split(" ")[1];
-        localStorage.setItem('customer', JSON.stringify(result.user));
-        window.location.reload();
-      }
-      this.setState(prevState => ({loading:!prevState.loading}));
-    })
-    .catch(error => {
-      this.setState({errorMessage:"Error logging in, please try again.", loading:false});
-    });
 
+    let url = 'https://backendapi.turing.com/customers/login';
+    let result = await loginApi(url, data);
+    if (result.error) {
+        this.setState({errorMessage:result.error.message, loading:false});
+      }
   }
   handleChange = (e) => {
     this.setState({[e.target.name]: e.target.value})

@@ -13,6 +13,7 @@ import Chip from '@material-ui/core/Chip';
 import { Row, Col } from 'react-bootstrap';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
 const styles = theme => ({
   root: {
     ...theme.mixins.gutters(),
@@ -34,7 +35,7 @@ const styles = theme => ({
 
 });
 class Products extends Component {
-   addToCart (product) {
+  addToCart (product) {
      //Set Default product details
      product.quantity = 1;
      product.size = 'S';
@@ -56,7 +57,7 @@ class Products extends Component {
       localStorage.setItem('products', JSON.stringify(productsArray));
     }
     this.successNotification("Successfully added to cart");
-  }
+   }
   successNotification = (message) => {
     toast.success(message, {
         position: toast.POSITION.TOP_RIGHT

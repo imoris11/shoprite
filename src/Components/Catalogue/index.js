@@ -3,6 +3,7 @@ import { Row, Col } from 'react-bootstrap';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Products from '../Products';
+import { getProductsApi } from '../Products/ProductsApi';
 export default class Search extends Component {
   constructor (props) {
     super(props);
@@ -27,33 +28,12 @@ export default class Search extends Component {
       this.searchProducts(newProps.match.params.id)
     }
   }
-  searchProducts = (departmentId, page=1) => {
-    fetch('https://backendapi.turing.com/products/inDepartment/'+departmentId+"?page="+page)
-    .then(response => response.json())
-    .then(result => {
-      let products = [];
-      result.rows.forEach((product)=> {
-        fetch('https://backendapi.turing.com/attributes/inProduct/'+product.product_id)
-        .then(res => res.json())
-        .then(attributes => {
-          let sizes = attributes.filter((att => att.attribute_name === 'Size'));
-          let colors = attributes.filter((att => att.attribute_name === 'Color'));
-          let item = product;
-          item['sizes'] = sizes;
-          item['colors'] = colors;
-          products.push(item);
-          this.setState({products, count:result.count, loading:false, currentPage:page});
-          this.setPagination(result.count.count);
-        }).catch(error => {
-          this.errorNotification("Oops, encountered an error. Please try again.");
-          this.setState({loadingError:true, loading:false});
-        })
-      })
-    })
-    .catch(error => {
-      this.errorNotification("Oops, encountered an error. Please try again.");
-      this.setState({loadingError:true, loading:false});
-    })
+  searchProducts = async (departmentId, page=1) => {
+    let url = 'https://backendapi.turing.com/products/inDepartment/'+departmentId;
+    let result = await getProductsApi(url, page, false);
+    this.setState({products:result.products, count:result.count, loading:false, currentPage:page});
+    //Set pages for pagination
+    this.setPagination(result.count);
   }
   errorNotification = (message) => {
     toast.error(message, {

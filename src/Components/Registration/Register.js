@@ -2,11 +2,12 @@ import React, {Component} from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import {Row, Col} from 'react-bootstrap';
+import { registerApi } from './AuthApi';
 class Register extends Component {
   state = {
     loading:false
   }
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault();
     this.setState(prevState => ({loading:!prevState.loading, form_submitted:true}));
     let data = {
@@ -15,30 +16,10 @@ class Register extends Component {
       password:this.state.password
     };
     let url = 'https://backendapi.turing.com/customers/';
-    fetch(url, {
-      method:'POST',
-      body: JSON.stringify(data),
-      headers:{'content-type': 'application/json'}
-    })
-    .then(response => response.json())
-    .then(result => {
-      if (result.error) {
-        this.setState({errorMessage:result.error.message});
-      }else{
-        localStorage.setItem('token', result.accessToken);
-        localStorage.setItem('customer_id', result.customer.customer_id)
-        result.customer.firstName = result.customer.name.split(" ")[0];
-        result.customer.lastName = result.customer.name.split(" ")[1];
-        localStorage.setItem('customer', JSON.stringify(result.customer));
-        console.log(result);
-        window.location.reload();
-      }
-      this.setState(prevState => ({loading:!prevState.loading}));
-    })
-    .catch(error => {
-      this.setState({errorMessage:"Error registering, please try again.", loading:false});
-    });
-
+    let result = await registerApi(url, data);
+    if (result.error) {
+      this.setState({errorMessage:result.error.message, loading:false})
+    }
   }
   handleChange = (e) => {
     this.setState({[e.target.name]: e.target.value})

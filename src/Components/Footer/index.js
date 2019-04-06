@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import '../../Resources/css/footer.css';
+import { getDepartmentsApi } from '../Extra/Apis';
 import moment from 'moment';
 const styles = theme => ({
   root: {
@@ -36,12 +37,11 @@ class Footer extends Component {
   componentDidMount () {
     this.fetchData();
   }
-  fetchData = () => {
-    fetch("https://backendapi.turing.com/departments").then(response => response.json()).then(results => {
-      if (!results.error) {
-        this.setState({departments:results})
-      }
-    })
+  fetchData = async () => {
+    let results = await getDepartmentsApi();
+    if (!results.error) {
+      this.setState({departments:results})
+    }
   }
   render () {
     let { classes } = this.props;

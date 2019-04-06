@@ -10,6 +10,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { getDataApi, saveCustomerApi, updateAddressApi } from './ProfileApi';
 export default class Delivery extends Component {
   state = {
     regions:[],
@@ -20,15 +21,9 @@ export default class Delivery extends Component {
     this.getCustomerDetails();
     this.fetchRegions();
   }
-  fetchRegions = () => {
-    fetch('https://backendapi.turing.com/shipping/regions')
-    .then(response => response.json())
-    .then(regions => {
-      this.setState({regions})
-    })
-    .catch(error => {
-      this.errorNotification("Oops!, encountered an error. Please try again");
-    })
+  fetchRegions = async () => {
+    let regions = await getDataApi('https://backendapi.turing.com/shipping/regions');
+    this.setState({regions});
   }
   getCustomerDetails = () => {
     let user = localStorage.getItem('customer');
@@ -86,15 +81,9 @@ export default class Delivery extends Component {
     });
     localStorage.setItem('shipping_cost', shipping[0].shipping_cost);
   }
-  fetchShippingDetails = (id) => {
-    fetch('https://backendapi.turing.com/shipping/regions/' + id)
-    .then(response => response.json())
-    .then(shipping => {
-      this.setState({shipping});
-    })
-    .catch(error => {
-      this.errorNotification("Oops!, encountered an error. Please try again");
-    })
+  fetchShippingDetails = async (id) => {
+    let shipping = await getDataApi('https://backendapi.turing.com/shipping/regions/' + id);
+    this.setState({shipping});
   }
   handleSubmit = (e) => {
     e.preventDefault();
@@ -115,30 +104,18 @@ export default class Delivery extends Component {
     this.updatCustomerInfo(data);
     localStorage.setItem('customer', JSON.stringify(data));
   }
-  updatCustomerInfo = (data) => {
+  updatCustomerInfo = async (data) => {
     let user = {
       name:data.firstName +  ' ' + data.lastName,
       email:data.email,
       mob_phone:data.mob_phone
     }
+    let url = 'https://backendapi.turing.com/customer';
     let token = localStorage.getItem('token');
-    fetch('https://backendapi.turing.com/customer', {
-      method:'PUT',
-      body:JSON.stringify(user),
-      headers:{
-        'Accept':'application/json',
-        'content-type':'application/json',
-        'user-key': token
-      }
-    })
-    .then(response => {
-      this.updateAddressInfo(data)
-    })
-    .catch(error => {
-      console.log(error);
-    })
+    let customer = await saveCustomerApi(url, user, token);
+    this.updateAddressInfo(data);
   }
-  updateAddressInfo = (data) => {
+  updateAddressInfo = async (data) => {
     let address = {
       address_1: data.address_1,
       city: data.city,
@@ -148,27 +125,15 @@ export default class Delivery extends Component {
       country:data.country
     }
     let token = localStorage.getItem('token');
-    fetch('https://backendapi.turing.com/customers/address', {
-      method:'PUT',
-      body:JSON.stringify(address),
-      headers:{
-        'Accept':'application/json',
-        'content-type':'application/json',
-        'user-key': token
-      }
-    })
-    .then(response => {
-      localStorage.setItem('shipping_id', this.state.delivery);
-      if (!this.props.contact){
-        this.setState({loading:false})
-        this.props.onNext();
-      }else{
-        this.successNotification("Successfully saved contact information")
-      }
-    })
-    .catch(error => {
-      console.log(error);
-    })
+    let url = 'https://backendapi.turing.com/customers/address';
+    let returnedAddress = await updateAddressApi(url, address, token);
+    localStorage.setItem('shipping_id', this.state.delivery);
+    if (!this.props.contact){
+      this.setState({loading:false})
+      this.props.onNext();
+    }else{
+      this.successNotification("Successfully saved contact information")
+    }
   }
   render () {
     let state = this.state;

@@ -14,7 +14,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import '../../Resources/css/header.css';
 import { Link } from 'react-router-dom';
-
+import { getDepartmentsApi } from '../Extra/Apis';
 const styles = theme => ({
   root: {
     width: '100%',
@@ -106,12 +106,11 @@ class PrimarySearchAppBar extends React.Component {
     this.confirmUserStatus()
   }
 
-  fetchData = () => {
-    fetch("https://backendapi.turing.com/departments").then(response => response.json()).then(results => {
-      if (!results.error) {
-        this.setState({departments:results})
-      }
-    })
+  fetchData = async () => {
+    let results = await getDepartmentsApi();
+    if (!results.error) {
+      this.setState({departments:results})
+    }
   }
 
   async confirmUserStatus () {

@@ -16,7 +16,8 @@ import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import { Row, Col } from 'react-bootstrap';
 import '../../Resources/css/cart.css';
-
+import { getTaxApi } from '../Checkout/CheckoutApi';
+import { createCartIdApi, addItemToCartApi } from './CartApi';
 const styles = theme => ({
   root: {
     width: '100%',
@@ -49,19 +50,14 @@ class Cart extends Component{
       this.fetchTaxInfo();
     }
   }
-  fetchTaxInfo () {
+  async fetchTaxInfo () {
     //Get tax info, and calculate initial costs
-    fetch('https://backendapi.turing.com/tax')
-    .then(response => response.json())
-    .then(result => {
+    let url = 'https://backendapi.turing.com/tax';
+    let result = await getTaxApi(url);
       if (result) {
         this.setState({tax: result[0].tax_percentage});
         this.calculateTotal(result[0].tax_percentage);
       }
-    })
-    .catch(error => {
-      console.log("Oops!, encountered an error");
-    })
   }
   calculateTotal = (tax) => {
     /*
@@ -157,50 +153,32 @@ class Cart extends Component{
    this.setState({products})
    this.upDateTotal(-Number(product.subtotal));
   }
-  addToCart = () => {
+  addToCart = async () => {
     let { products } = this.state;
     this.setState({loading:true})
     //generate cart id
-    fetch('https://backendapi.turing.com/shoppingcart/generateUniqueId')
-    .then(response => response.json())
-    .then(cart => {
-      localStorage.setItem('cart_id', cart.cart_id);
-      this.setState({cart_id:cart.cart_id})
-      //add items to cart
-      products.forEach((product)=> {
-        this.addItem(product, cart.cart_id);
-      })
-      //save total costs to localStorage
-      this.saveFinalCost();
-      this.setState({loading:false})
-      this.props.onNext()
+    let url = 'https://backendapi.turing.com/shoppingcart/generateUniqueId'
+    let cart = await createCartIdApi(url);
+    localStorage.setItem('cart_id', cart.cart_id);
+    this.setState({cart_id:cart.cart_id})
+    //add items to cart
+    products.forEach((product)=> {
+      this.addItem(product, cart.cart_id);
     })
-    .catch(error => {
-      console.log(error)
-    });
+    //save total costs to localStorage
+    this.saveFinalCost();
+    this.setState({loading:false})
+    this.props.onNext()
   }
-  addItem = (product, cart_id) => {
+  addItem = async (product, cart_id) => {
     for (let i=0; i<product.quantity; i++) {
       let data = {
         cart_id:cart_id,
         product_id:product.product_id,
         attributes: product.size + " " + product.color
       }
-      fetch('https://backendapi.turing.com/shoppingcart/add', {
-        method:'POST',
-        body:JSON.stringify(data),
-        headers:{
-          'Accept':'application/json',
-          'content-type':'application/json'
-        }
-      })
-      .then(response => response.json())
-      .then(item => {
-        //Do nothing...item has been added to online cart
-      })
-      .catch(error => {
-        console.log(error)
-      })
+      let url = 'https://backendapi.turing.com/shoppingcart/add';
+      let item =  await addItemToCartApi(url, data);
     }
   }
   render () {

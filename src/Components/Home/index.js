@@ -6,6 +6,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../../Resources/css/home.css';
 import Products from '../Products';
+import { getDepartmentsApi, getCategoriesApi } from '../Extra/Apis';
+import { getProductsApi } from '../Products/ProductsApi';
 const styles = theme => ({
   root: {
     ...theme.mixins.gutters(),
@@ -36,6 +38,7 @@ const styles = theme => ({
       currentPage:1,
       departments:[],
       categories:[],
+      byDepartment:false,
       url:'https://backendapi.turing.com/products'
     }
   }
@@ -44,59 +47,30 @@ const styles = theme => ({
     this.fetchDepartments();
     this.fetchCategories();
   }
-  fetchDepartments = () => {
-    fetch('https://backendapi.turing.com/departments').then(response => response.json()).then(results => {
-      if (!results.error) {
-        this.setState({departments:results})
-      }else{
-        this.errorNotification(results.error.message)
-      }
-    })
+  fetchDepartments = async () => {
+    let results = await getDepartmentsApi();
+    if (!results.error) {
+      this.setState({departments:results})
+    }else{
+      this.errorNotification(results.error.message)
+    }
   }
-  fetchCategories = () => {
-    fetch('https://backendapi.turing.com/categories').then(response => response.json()).then(results => {
-      if (!results.error) {
-        this.setState({categories:results.rows})
-      }else{
-        this.errorNotification(results.error.message)
-      }
-    })
+  fetchCategories = async () => {
+    let results = await getCategoriesApi();
+    if (!results.error) {
+      this.setState({categories:results.rows})
+    }else{
+      this.errorNotification(results.error.message)
+    }
   }
-  fetchData = (page) => {
+  fetchData = async (page) => {
     //Fetch products and attributes by page
-    let { url } = this.state;
     this.setState({loading:true, products:[]});
-    fetch(url+'?page='+page)
-    .then(response => response.json())
-    .then(result => {
-      let products = [];
-      result.rows.forEach((product)=> {
-        fetch('https://backendapi.turing.com/attributes/inProduct/'+product.product_id)
-        .then(res => res.json())
-        .then(attributes => {
-          let sizes = attributes.filter((att => att.attribute_name === 'Size'));
-          let colors = attributes.filter((att => att.attribute_name === 'Color'));
-          let item = product;
-          item['sizes'] = sizes;
-          item['colors'] = colors;
-          products.push(item);
-          this.setState({products, count:result.count, loading:false, currentPage:page});
-        }).catch(error => {
-          this.errorNotification("Encountered an error. Please try again.");
-          this.setState({loading:false})
-        })
-      })
-      //Set pages for pagination
-      if (this.state.byDepartment){
-        this.setPagination(result.count.count);
-      }else{
-        this.setPagination(result.count);
-      }
-    })
-    .catch(error => {
-      this.errorNotification("Encountered an error. Please try again.");
-      this.setState({loading:false})
-    })
+    let { url } = this.state;
+    let result = await getProductsApi(url, page, this.state.byDepartment);
+    this.setState({products:result.products, count:result.count, loading:false, currentPage:page});
+    //Set pages for pagination
+    this.setPagination(result.count);
   }
   errorNotification = (message) => {
     toast.error(message, {

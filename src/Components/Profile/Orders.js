@@ -6,6 +6,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import moment from 'moment';
+import { getOrdersApi} from './ProfileApi';
 export default class Orders extends Component {
   state = {
     orders:[]
@@ -13,20 +14,11 @@ export default class Orders extends Component {
   componentDidMount () {
     this.fetchOrders();
   }
-  fetchOrders = () => {
+  fetchOrders = async () => {
     let token = localStorage.getItem('token');
-    fetch('https://backendapi.turing.com/orders/inCustomer', {
-      headers:{
-        'user-key':token
-      }
-    })
-    .then(response => response.json())
-    .then(orders => {
-      this.setState({orders})
-    })
-    .catch(error => {
-      console.log(error);
-    })
+    let url = 'https://backendapi.turing.com/orders/inCustomer';
+    let orders = await getOrdersApi(url, token);
+    this.setState({ orders })
   }
   render () {
     let { orders } = this.state
