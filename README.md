@@ -18,6 +18,13 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 Launches the test runner in the interactive watch mode.<br>
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
+## Folder Structure
+All the components are located in `src/Components`. Each component is placed in its own folder (e.g `Home` folder for `Home` component). All secondary/supporting components are contained in the same folder as their parent component. However, `Timestamp` and `Loading` are used multiple over several components and as such can be found in the `Extra` folder under `Components`.
+<br>
+
+Each file exports ONLY ONE component. <br>
+CamelCase is the primary naming convention for methods while underscores are used for data (variables) retrieved from the server.  
+
 ## Learn More (Packages)
 
 ### Material UI and Bootstrap
@@ -36,4 +43,12 @@ This package is used to convert UNIX timestamps returned by the server to relati
 Used primarily for app navigation. <br>
 
 ### React Toastify
-[See here](https://github.com/fkhadra/react-toastify) is used for showing status messages to the user. 
+[See here](https://github.com/fkhadra/react-toastify) is used for showing status messages to the user.
+
+## Learn More (APIs)
+
+### Turing APIs
+[See here](https://backendapi.turing.com/docs/#/) for all API endpoints.
+
+### Local Storage (Offline first approach)
+Local storage was used to store persistent data throughout the life cycle of the application. Design choices were made in favor of local storage over accessing the endpoints when possible. <br><br>
