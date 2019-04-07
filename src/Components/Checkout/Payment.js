@@ -2,26 +2,25 @@ import React, {Component} from 'react';
 import StripeCheckout from './Form';
 import { Row, Col } from 'react-bootstrap';
 import '../../Resources/css/payment.css';
+import { getTotalCostApi } from './CheckoutApi';
 import LinearIndeterminate from '../Extra/Loading';
 export default class Payment extends Component {
   state = {
     payment:'card',
-    tax_sum:0,
     total:0,
-    subtotal:0,
-    tax_id:0,
-    shipping_cost:0,
   }
   componentDidMount () {
     this.getTotalCost();
   }
-  getTotalCost () {
-    let { total, subtotal, tax_sum, shipping_cost } = 0;
-    tax_sum = Number(localStorage.getItem('tax_sum'));
-    subtotal = Number(localStorage.getItem('subtotal'));
-    shipping_cost = Number(localStorage.getItem('shipping_cost'));
-    total = Number(localStorage.getItem('total')) + shipping_cost;
-    this.setState({total, subtotal, tax_sum, shipping_cost});
+  async getTotalCost () {
+    let { total } = this.state;
+    //Get total cost from online cart
+    let cart_id = localStorage.getItem('cart_id');
+    let url = 'https://backendapi.turing.com/shoppingcart/totalAmount/'+cart_id;
+    let res = await getTotalCostApi(url);
+    total = Number(res.total_amount);
+
+    this.setState({total});
   }
   onNext = () => this.props.onNext();
   setIsLoading = () => this.setState({loading:true})
@@ -40,10 +39,7 @@ export default class Payment extends Component {
             </Col>
           </Row>
           {!this.state.loading && <Col>
-            <h6 >SubTotal: ${this.state.subtotal.toFixed(2)}</h6>
-            <h6 >Tax: ${this.state.tax_sum.toFixed(2)}</h6>
-            <h6 >Shipping: ${this.state.shipping_cost.toFixed(2)}</h6>
-            <h5 >Total: ${this.state.total.toFixed(2)}</h5>
+            <h6 >Total: ${this.state.total.toFixed(2)}</h6>
             {payment === 'card' &&
             <StripeCheckout isLoading={this.setIsLoading} onNext={this.onNext} />}
           </Col>}

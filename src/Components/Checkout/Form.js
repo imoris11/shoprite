@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import StripeCheckout from 'react-stripe-checkout';
-import { makeOrderApi, chargeOrderApi, getTaxApi } from './CheckoutApi';
+import { makeOrderApi, chargeOrderApi, getTaxApi, getTotalCostApi } from './CheckoutApi';
+
 class Form extends Component {
   constructor(props) {
     super(props);
@@ -10,8 +11,18 @@ class Form extends Component {
     this.submit = this.submit.bind(this);
   }
   componentDidMount () {
-    let total = Number(localStorage.getItem('total'));
-    this.setState({total})
+    this.getTotalCost();
+  }
+
+  async getTotalCost () {
+    let { total } = this.state;
+    //Get total cost from online cart
+    let cart_id = localStorage.getItem('cart_id');
+    let url = 'https://backendapi.turing.com/shoppingcart/totalAmount/'+cart_id;
+    let res = await getTotalCostApi(url);
+    total = Number(res.total_amount);
+
+    this.setState({total});
   }
 
   async submit(token) {

@@ -27,3 +27,7 @@ export const chargeOrderApi = async (url, data) => {
   });
   return;
 }
+export const getTotalCostApi = async (url) => {
+  let response = await fetch(url);
+  return await response.json();
+}
