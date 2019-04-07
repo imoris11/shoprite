@@ -179,6 +179,7 @@ class Cart extends Component{
       }
       let url = 'https://backendapi.turing.com/shoppingcart/add';
       let item =  await addItemToCartApi(url, data);
+      console.log(item);
     }
   }
   render () {
