@@ -12,7 +12,7 @@ import Cart from '../Cart';
 export default class Checkout extends Component {
   state = {
     steps: ['Confirmation', 'Contact Information', 'Payment', 'Finish'],
-    activeStep:2,
+    activeStep:0,
     showDialog:false
   }
   componentDidMount () {

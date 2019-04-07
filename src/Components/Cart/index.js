@@ -78,9 +78,7 @@ class Cart extends Component{
     //Given a price  (negative or positive), recalculate costs
     let {subtotal, total, tax } = this.state;
     subtotal += price;
-    let tax_sum = (subtotal * (tax/100));
-    total = subtotal + Number(tax_sum);
-    this.setState({subtotal, tax_sum, total});
+    this.setState({ subtotal });
   }
   addQuantity = (product, key) => {
     /*
@@ -179,7 +177,6 @@ class Cart extends Component{
       }
       let url = 'https://backendapi.turing.com/shoppingcart/add';
       let item =  await addItemToCartApi(url, data);
-      console.log(item);
     }
   }
   render () {
@@ -268,9 +265,7 @@ class Cart extends Component{
           <Col >
             <Row className='float-right'>
               <Col>
-                <h6 >SubTotal: ${this.state.subtotal.toFixed(2)}</h6>
-                <h6 >Tax: ${this.state.tax_sum.toFixed(2)}</h6>
-                <h5 >Total: ${this.state.total.toFixed(2)}</h5>
+                <h6 >Total: ${this.state.subtotal.toFixed(2)}</h6>
                 {this.props.checkout ? this.state.loading ?
                   <Button variant='contained' color="secondary">
                     Saving...
