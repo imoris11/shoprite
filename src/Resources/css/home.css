@@ -1,8 +1,9 @@
+
 .link-item {
   cursor: pointer;
 }
 .link-item:hover{
-  color:#f62f5e;
+  color: var(--primaryColor);
 }
 .flip-container {
 	perspective: 1000px;
@@ -61,8 +62,13 @@
   font-size: 18px;
   text-align: center;
 }
+.page-item:hover{
+  background-color: var(--primaryColor);
+  border-color: var(--primaryBorderColor);
+  color: var(--primaryTextColor);
+}
 .page-item-active {
-  background-color: #f62f5e;
+  background-color: var(--primaryColor);
   width: 30px;
   height: 30px;
   border-radius: 15px;
@@ -70,9 +76,9 @@
   margin-right: 5px;
   border-style: solid;
   border-width: thin;
-  border-color: white;
+  border-color: var(--primaryBorderColor);
   cursor: pointer;
   font-size: 18px;
   text-align: center;
-  color:white;
+  color: var(--primaryTextColor);
 }

@@ -76,7 +76,7 @@ class Cart extends Component{
   }
   upDateTotal = (price) => {
     //Given a price  (negative or positive), recalculate costs
-    let {subtotal, total, tax } = this.state;
+    let { subtotal } = this.state;
     subtotal += price;
     this.setState({ subtotal });
   }

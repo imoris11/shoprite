@@ -31,7 +31,7 @@
 }
 .price {
   font-weight:700;
-  color:#f62f5e;
+  color:var(--primaryColor);
 }
 .star {
   color:orange;
