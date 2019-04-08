@@ -114,7 +114,7 @@ class Header extends Component{
     const { classes } = this.props;
     return (
       <div className={classes.root}>
-        <Col style={{backgroundColor:'#2e2e2e', color:'white'}}>
+        <Col className='primary-header'>
           <Row>
             <Col sm={3} xs={10}>
               {!this.state.token ?

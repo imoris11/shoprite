@@ -1,6 +1,6 @@
 .footer-links{
   text-transform: uppercase;
-  color: black;
+  color: var(--footerColor);
   margin-top: 10px;
   font-size: 16px;
 }
